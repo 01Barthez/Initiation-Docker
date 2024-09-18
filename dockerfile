@@ -1,9 +1,13 @@
-FROM node:alpine3.20
+FROM node:current-alpine
+
+EXPOSE 5500
 
 WORKDIR /app
 
-COPY . /app
+COPY package.json package-lock.json /app/
 
-RUN npm i -g yarn && yarn install
+RUN npm install
 
-CMD [ "yarn", "run", "start" ]
+COPY . /app/
+
+CMD [ "npm", "run", "start" ]
