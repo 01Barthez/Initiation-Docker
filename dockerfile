@@ -1,9 +1,9 @@
-FROM alpine
+FROM node:alpine3.20
 
 WORKDIR /app
 
-COPY . /app/
+COPY . /app
 
-RUN yarn install && yarn add taiwindcss
+RUN npm i -g yarn && yarn install
 
-CMD [ "yarn run" ]
+CMD [ "yarn", "run", "start" ]
